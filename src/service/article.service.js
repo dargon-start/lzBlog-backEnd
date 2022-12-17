@@ -131,7 +131,7 @@ class articles {
     let statement, statement1;
     if (keyword !== undefined) {
       statement = ` 
-            SELECT m.id articleId, m.title title, m.synopsis synopsis, m.creatat createTime, m.updateat updateTime, m.glanceNum glanceNum,
+            SELECT m.id articleId, m.title title, m.synopsis synopsis, m.creatat createTime, m.updateat updateTime, m.glanceNum glanceNum,(SELECT COUNT(c.id) FROM comment c  WHERE c.article_id = m.id) commentNums,(SELECT COUNT(c.id) FROM comment c  WHERE c.article_id = m.id and c.isRead = 0) newCommentNums,
                 (SELECT COUNT(user_id) from art_likes ml WHERE ml.article_id = m.id) likeNumber, JSON_OBJECT("id", u.id, "name", u.name, 'avatar', u.avatar_url) user,
                 (SELECT IF(COUNT(l.id), JSON_ARRAYAGG(JSON_OBJECT('id', l.id, 'name', l.name)), NULL) FROM article_label ml LEFT JOIN label l ON ml.label_id = l.id WHERE ml.article_id = m.id) labelList
             FROM articles m LEFT JOIN users u on m.user_id = u.id where INSTR(title,?)>0 ORDER BY glanceNum DESC LIMIT ? , ?  ;`;
@@ -152,7 +152,7 @@ class articles {
       };
     } else {
       statement = ` 
-            SELECT m.id articleId, m.title title, m.synopsis synopsis, m.creatat createTime, m.updateat updateTime, m.glanceNum glanceNum,
+            SELECT m.id articleId, m.title title, m.synopsis synopsis, m.creatat createTime, m.updateat updateTime, m.glanceNum glanceNum,(SELECT COUNT(c.id) FROM comment c  WHERE c.article_id = m.id) commentNums,(SELECT COUNT(c.id) FROM comment c  WHERE c.article_id = m.id and c.isRead = 0) newCommentNums,
                 (SELECT COUNT(user_id) from art_likes ml WHERE ml.article_id = m.id) likeNumber, JSON_OBJECT("id", u.id, "name", u.name, 'avatar', u.avatar_url) user,
                 (SELECT IF(COUNT(l.id), JSON_ARRAYAGG(JSON_OBJECT('id', l.id, 'name', l.name)), NULL) FROM article_label ml LEFT JOIN label l ON ml.label_id = l.id WHERE ml.article_id = m.id) labelList
             FROM articles m LEFT JOIN users u on m.user_id = u.id  ORDER BY glanceNum DESC LIMIT ? , ?  ;`;
