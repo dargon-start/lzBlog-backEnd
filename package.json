@@ -1,0 +1,27 @@
+{
+  "name": "my_blog_back",
+  "version": "1.0.0",
+  "description": "龙仔个人博客后端接口。",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^3.3.0",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "fs": "0.0.1-security",
+    "jimp": "^0.16.1",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.4",
+    "koa-body": "^5.0.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-morgan": "^1.0.1",
+    "koa-router": "^10.1.1",
+    "mysql2": "^2.3.3",
+    "node-rsa": "^1.1.1",
+    "nodemailer": "^6.7.6"
+  }
+}
