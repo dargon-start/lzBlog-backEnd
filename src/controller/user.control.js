@@ -34,8 +34,8 @@ class UserController {
             host: "smtp.qq.com",
             port: 465,
             auth: {
-                user: "1793607990@qq.com", // generated ethereal user
-                pass: "wjuxykrzhtyzdbbi", // generated ethereal password
+                user: "179***7990@qq.com", // generated ethereal user
+                pass: "wjuxzdbbi", // generated ethereal password
             },
         });
 
@@ -62,7 +62,7 @@ class UserController {
         // send mail with defined transport object
         try {
             let info = await transporter.sendMail({
-                from: '1793607990@qq.com', // sender address
+                from: '179***7990@qq.com', // sender address
                 to: email, // list of receivers
                 subject: "龙仔博客-验证邮件", // Subject line
                 text: "验证码：" + code, // plain text body
